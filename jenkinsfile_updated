@@ -12,7 +12,8 @@ pipeline {
     stages {
         stage('GIT CHECKOUT') {
             steps {
-               git branch: 'main', url: 'https://github.com/VM2322/Vivek-s-Gaming-Application'
+               git branch: 'main', url: 'https://github.com/Vishwa0405/Gaming-Application.git
+'
             }
         }
     
@@ -61,7 +62,7 @@ pipeline {
             steps {
                script {
                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                            sh "docker build -t vm2322/gaming:latest ."
+                            sh "docker build -t vishwa0405/gaming:latest ."
                     }
                }
             }
@@ -75,7 +76,7 @@ pipeline {
             
         stage('DOCKER DEPLOYMENT') {
             steps {
-                sh "docker run -d -p 8090:8080 vm2322/gaming:latest"
+                sh "docker run -d -p 8090:8080 vishwa0405/gaming:latest"
             }
         }   
     }
