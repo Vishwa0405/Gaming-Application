@@ -75,7 +75,7 @@ pipeline {
             }
         }   
         
-         stage ("Remove container") {
+         stage ("REMOVE CONATAINER") {
             steps{
                 sh "docker stop game | true"
                 sh "docker rm game | true"
