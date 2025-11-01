@@ -75,7 +75,7 @@ pipeline {
             }
         }   
         
-         stage ("REMOVE CONATAINER") {
+         stage ("REMOVE CONATAINER DEPLOYED") {
             steps{
                 sh "docker stop game | true"
                 sh "docker rm game | true"
