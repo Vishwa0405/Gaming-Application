@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('GIT CHECKOUT') {
             steps {
-               git branch: 'main', url: 'https://github.com/Vishwa0405/Gaming-Application.git
+               git branch: 'main', url: 'https://github.com/Vishwa0405/Gaming-Application.git'
 '
             }
         }
