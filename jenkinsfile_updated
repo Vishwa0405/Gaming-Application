@@ -62,7 +62,8 @@ pipeline {
             steps {
                script {
                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                            sh "docker build -t vm2322/gaming:latest ."
+                            sh "docker build -t vishwa0405/game:latest ."
+                            sh "docker push vishwa0405/game:latest"
                     }
                }
             }
@@ -70,13 +71,20 @@ pipeline {
     
              stage('IMAGE SCANNING') {
             steps {
-                sh "trivy image --format table -o trivy-image-report.html vm2322/gaming:latest "
+                sh "trivy image --format table -o trivy-image-report.html vishwa0405/game:latest "
             }
         }   
+        
+         stage ("Remove container") {
+            steps{
+                sh "docker stop game | true"
+                sh "docker rm game | true"
+             }
+        }
             
         stage('DOCKER DEPLOYMENT') {
             steps {
-                sh "docker run -d -p 8091:8080 vm2322/gaming:latest"
+                sh "docker run -d -p 8095:8080 vishwa0405/game:latest"
             }
         }   
     }
